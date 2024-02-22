@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#tool-bar {
+    height: 50px;
+    border: 2px black solid;
+    display: flex;
+}
+
+#container {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-file-window {
+    height: 200px;
+    width: 300px;
+    padding: 10px;
+    border: 2px black solid;
+    border-radius: 10%;
+    background-color: bisque;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.new-file-window > input {
+    height: 50px;
+}
+
+#matrix {
+    display: grid;
+    grid-template-columns: 0;
+    grid-template-rows: 0;
+    /* border: 1px solid black; */
+}
+
+.pixel {
+    height: 35px;
+    width: 35px;
+    border: solid 1px black;
+    background-color: white;
+}
