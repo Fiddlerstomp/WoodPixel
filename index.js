@@ -6,7 +6,8 @@ const tools = {
 
 const state = {
     currentTool: tools.pencil,
-    color: `rgb(${255}, ${0}, ${0})`
+    color: `rgb(${255}, ${0}, ${0})`,
+    isMousedown: false
 }
 
 function newFileClickHandler() {
@@ -85,7 +86,9 @@ function makeGrid(width, height) {
         const pixel = document.createElement("div");
         pixel.classList.add("pixel");
         pixel.index = i;
-        pixel.addEventListener("click", pixelClickHandler);
+        pixel.addEventListener("mousedown", pixelMousedownHandler);
+        pixel.addEventListener("mouseup", pixelMouseupHandler);
+        pixel.addEventListener("mouseover", pixelMouseoverHandler);
         matrix.appendChild(pixel)
     }
 }
@@ -104,10 +107,9 @@ function eraserButtonClickHandler() {
     state.currentTool = tools.eraser;
 }
 
-function pixelClickHandler(event) {
+function workWithPixel(pixel) {
     console.log("pixel hadler");
 
-    const pixel = event.target;
     switch (state.currentTool) {
         case tools.pencil:
             pixel.style.backgroundColor = state.color;
@@ -115,5 +117,20 @@ function pixelClickHandler(event) {
         case tools.eraser:
             pixel.style.backgroundColor = "white";
             break;
+    }
+}
+
+function pixelMousedownHandler(event) {
+    state.isMousedown = true;
+    workWithPixel(event.target);
+}
+
+function pixelMouseupHandler() {
+    state.isMousedown = false;
+}
+
+function pixelMouseoverHandler(event) {
+    if (state.isMousedown) {
+        workWithPixel(event.target);
     }
 }
