@@ -7,7 +7,29 @@ const tools = {
 const state = {
     currentTool: tools.pencil,
     color: `rgb(${255}, ${0}, ${0})`,
-    isMousedown: false
+    isMousedown: false,
+    defaultColors: [
+        "black",
+        "red",
+        "blue",
+        "yellow",
+        "pink"
+    ],
+    activeColorElement: null
+};
+
+window.onload = function() {
+    makeColorMenu();
+}
+
+function makeColorMenu() {
+    state.defaultColors.forEach(color => {
+        const colorElement = document.createElement("div");
+        colorElement.classList.add("color");
+        colorElement.style.backgroundColor = color;
+        colorElement.addEventListener("click", colorClickHandler);
+        document.querySelector(".color-menu").appendChild(colorElement);
+    });
 }
 
 function newFileClickHandler() {
@@ -23,12 +45,12 @@ function makeCreateImageWindow() {
     newWindow.classList.add("new-file-window");
 
     const heightInput = document.createElement("input");
-    heightInput.id = "height"
+    heightInput.id = "height";
     heightInput.setAttribute("type", "number");
     heightInput.setAttribute("placeholder", "Height");
 
     const widthInput = document.createElement("input");
-    widthInput.id = "width"
+    widthInput.id = "width";
     widthInput.setAttribute("type", "number");
     widthInput.setAttribute("placeholder", "Width");
 
@@ -89,7 +111,7 @@ function makeGrid(width, height) {
         pixel.addEventListener("mousedown", pixelMousedownHandler);
         pixel.addEventListener("mouseup", pixelMouseupHandler);
         pixel.addEventListener("mouseover", pixelMouseoverHandler);
-        matrix.appendChild(pixel)
+        matrix.appendChild(pixel);
     }
 }
 
@@ -105,6 +127,18 @@ function eraserButtonClickHandler() {
     document.getElementById(state.currentTool + "-button").classList.remove("active-tool");
     document.getElementById("eraser-button").classList.add("active-tool");
     state.currentTool = tools.eraser;
+}
+
+function colorClickHandler(event) {
+    console.log("color click");
+    const colorElement = event.target;
+    colorElement.classList.add(colorElement.style.backgroundColor !== "black" ? "color-active" : "color-active-black");
+    state.color = colorElement.style.backgroundColor;
+    if (state.activeColorElement) {
+        state.activeColorElement.classList.remove(state.activeColorElement.style.backgroundColor !== "black" ? "color-active" : "color-active-black");
+    }
+    state.activeColorElement = colorElement;
+    console.log(colorElement.style.backgroundColor);
 }
 
 function workWithPixel(pixel) {

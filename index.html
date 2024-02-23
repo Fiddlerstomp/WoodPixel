@@ -8,10 +8,19 @@
 </head>
 <body>
     <div id="tool-bar">
-        <button onclick="newFileClickHandler()">New file</button>
-        <button id="pencil-button" class="active-tool" onclick="pencilButtonClickHandler()"><img src="icons/pencil.png" alt="pencil"></button>
-        <button id="eraser-button" onclick="eraserButtonClickHandler()"><img src="icons/eraser.png" alt="eraser"></button>
-        <button id="color-picker-button"><img src="icons/color-picker.png" alt="color-picker"></button>
+        <div class="options-menu">
+            <button onclick="newFileClickHandler()">New file</button>
+        </div>
+        <div class="tools-menu">
+            <button id="pencil-button" class="active-tool" onclick="pencilButtonClickHandler()"><img src="icons/pencil.png" alt="pencil"></button>
+            <button id="eraser-button" onclick="eraserButtonClickHandler()"><img src="icons/eraser.png" alt="eraser"></button>
+            <button id="color-picker-button"><img src="icons/color-picker.png" alt="color-picker"></button>
+        </div>
+        <div class="color-menu">
+            <div class="color-row">
+                
+            </div>
+        </div>
     </div>
     <div id="container"></div>
 </body>

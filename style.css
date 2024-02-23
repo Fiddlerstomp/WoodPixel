@@ -4,15 +4,58 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     height: 100%;
 }
 
 #tool-bar {
-    height: 50px;
+    height: 60px;
     border: 2px black solid;
     display: flex;
+}
+
+.options-menu {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.options-menu>* {
+    height: 100%;
+}
+
+.tools-menu {
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.tools-menu>* {
+    height: 100%;
+}
+
+.color-menu {
+    border-left: black solid 1px;
+    border-right: black solid 1px;
+    margin-left: 30px;
+    display: flex;
+}
+
+.color {
+    height: 15px;
+    width: 15px;
+    border: solid 0.5px black;
+    cursor: pointer;
+}
+
+.color-active {
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 50%, #000 50%, #000 75%, transparent 75%, #fff);
+}
+
+.color-active-black {
+    background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 50%, #fff 50%, #fff 75%, transparent 75%, #fff);
 }
 
 .active-tool {
@@ -41,7 +84,7 @@ html, body {
     justify-content: center;
 }
 
-.new-file-window > input {
+.new-file-window>input {
     height: 50px;
 }
 
@@ -49,12 +92,12 @@ html, body {
     display: grid;
     grid-template-columns: 0;
     grid-template-rows: 0;
-    /* border: 1px solid black; */
+    border: black 2px solid;
+    cursor: crosshair;
 }
 
 .pixel {
     height: 35px;
     width: 35px;
-    border: solid 1px black;
     background-color: white;
 }
